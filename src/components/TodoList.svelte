@@ -6,7 +6,9 @@
 <div class="app-body">
     <ul>
 
-        <TodoItem></TodoItem>
+        <TodoItem itemText="First ToDo" completed = {true}></TodoItem>
+        <TodoItem itemText="Second ToDo" completed = {true}></TodoItem>
+        <TodoItem itemText="Incompleted ToDo" completed = {false}></TodoItem>
         <TodoItem></TodoItem>
         <TodoItem></TodoItem>
 

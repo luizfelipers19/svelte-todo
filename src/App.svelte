@@ -4,7 +4,14 @@ import Header from "./components/Header.svelte";
     import TodoList from "./components/TodoList.svelte";
 
 
+    let todos = [
+        {id:1 , text: "IDK todo", completed: false},
+        {id:2 , text: "IDK todo 3", completed: true},
+    ]
+
 </script>
+
+
 
 <div id="app-container" class="app-container">
 
