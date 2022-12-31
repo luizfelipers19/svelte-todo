@@ -1,12 +1,15 @@
 <script>
     import TodoItem from "./TodoItem.svelte";
+    export let todos;
 
 </script>
 <!-- List of actual todos -->
 <div class="app-body">
     <ul>
 
-        <TodoItem itemText="First ToDo" completed = {true}></TodoItem>
+       {#each todos as todo}
+        <TodoItem itemText= {todo.text} completed = {todo.completed}></TodoItem>
+       {/each}
         <TodoItem itemText="Second ToDo" completed = {true}></TodoItem>
         <TodoItem itemText="Incompleted ToDo" completed = {false}></TodoItem>
         <TodoItem></TodoItem>

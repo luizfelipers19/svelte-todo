@@ -7,6 +7,7 @@ import Header from "./components/Header.svelte";
     let todos = [
         {id:1 , text: "IDK todo", completed: false},
         {id:2 , text: "IDK todo 3", completed: true},
+        {id:3 , text: "My new Todo", completed: true},
     ]
 
 </script>
@@ -19,7 +20,7 @@ import Header from "./components/Header.svelte";
 	<Header></Header>
 	
 	<!-- List of actual todos -->
-	<TodoList></TodoList>
+	<TodoList todos= {todos}></TodoList>
 
     <!-- Form component that takes input from user -->
     <Form></Form>
