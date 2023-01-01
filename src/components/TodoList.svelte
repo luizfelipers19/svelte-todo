@@ -4,10 +4,10 @@
     export let todos;
     const dispatch = createEventDispatcher();
 
-    function forward(event){
-        // console.log("in todos: ", event.detail);
-        dispatch("completed", event.detail);
-    }
+    // function forward(event){
+    //     // console.log("in todos: ", event.detail);
+    //     dispatch("completed", event.detail);
+    // }
 
 </script>
 <!-- List of actual todos -->
@@ -19,7 +19,7 @@
             itemId = {todo.id}
             itemText= {todo.text} 
             completed = {todo.completed}
-            on:completed= {forward}>
+            on:completed>
         
         </TodoItem>
        {/each}
