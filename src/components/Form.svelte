@@ -8,11 +8,18 @@
         console.log("Created new Todo")
         dispatch("created");
     }
+
+    function validateSubmit(event){
+        if(event.key == 'Enter'){
+            created();
+        }
+        
+    }
 </script>
 
 <!-- Add form at bottom -->
 <div class="app-form">
-    <input bind:value={newText} placeholder="Add Todo.." type="text" class="input-text" name="">
+    <input bind:value={newText} placeholder="Add Todo.." type="text" class="input-text" name="" on:keypress={validateSubmit}>
     <button class="btn fa-solid fa-plus" on:click={created}></button>
 </div>
 
