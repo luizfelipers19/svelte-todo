@@ -4,6 +4,8 @@ import Header from "./components/Header.svelte";
     import TodoList from "./components/TodoList.svelte";
 
 
+    let newText;
+
     let todos = [
         {id:1 , text: "IDK todo", completed: false},
         {id:2 , text: "IDK todo 3", completed: true},
@@ -31,6 +33,18 @@ import Header from "./components/Header.svelte";
         todos = todos;
     }
 
+    function createdTodo(){
+        console.log("created: ", newText);
+        newText =newText.trim();
+        if (newText != ""){
+            let newId = Math.max(...todos.map((e)=> e.id)) + 1;
+            todos = [...todos, {id: newId, text: newText, completed:false}];
+         }
+         newText = "";
+    }
+
+    
+
 </script>
 
 
@@ -44,7 +58,7 @@ import Header from "./components/Header.svelte";
 	<TodoList todos= {todos} on:completed={onComplete}></TodoList>
 
     <!-- Form component that takes input from user -->
-    <Form></Form>
+    <Form bind:newText on:created={createdTodo}></Form>
 
 </div>
 
