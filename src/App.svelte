@@ -10,6 +10,16 @@ import Header from "./components/Header.svelte";
         {id:3 , text: "My new Todo", completed: true},
     ]
 
+    let totalTodos;
+    let remainingTodos;
+
+    $: totalTodos = todos.length;
+    $: remainingTodos= todos.reduce((n, todo) => {
+        return n+ (todo.completed ? 0 : 1)
+    }
+    
+    ,0)
+
     function onComplete(event){
         let updateId = event.detail.id;
         // console.log("Completing ", updateId);
@@ -28,7 +38,7 @@ import Header from "./components/Header.svelte";
 <div id="app-container" class="app-container">
 
     <!-- Header with counter and remaining tasks counter -->
-	<Header></Header>
+	<Header totalTodos={totalTodos} remainingTodos={remainingTodos}></Header>
 	
 	<!-- List of actual todos -->
 	<TodoList todos= {todos} on:completed={onComplete}></TodoList>
