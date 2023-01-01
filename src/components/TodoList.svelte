@@ -19,14 +19,11 @@
             itemId = {todo.id}
             itemText= {todo.text} 
             completed = {todo.completed}
-            on:completed>
+            on:completed
+            on:deleted>
         
         </TodoItem>
        {/each}
-        <TodoItem itemText="Second ToDo" completed = {true}></TodoItem>
-        <TodoItem itemText="Incompleted ToDo" completed = {false}></TodoItem>
-        <TodoItem></TodoItem>
-        <TodoItem></TodoItem>
 
 
     </ul>

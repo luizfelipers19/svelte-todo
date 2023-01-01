@@ -33,6 +33,15 @@ import Header from "./components/Header.svelte";
         todos = todos;
     }
 
+    function onDelete(event){
+        let delId = event.detail.id
+        console.log("Deleted the id number ",delId, "Todo");
+
+        todos = todos.filter((todo) => {
+            return todo.id != delId
+        });
+    }
+
     function createdTodo(){
         console.log("created: ", newText);
         newText =newText.trim();
@@ -42,6 +51,8 @@ import Header from "./components/Header.svelte";
          }
          newText = "";
     }
+
+    
 
     
 
@@ -55,7 +66,7 @@ import Header from "./components/Header.svelte";
 	<Header totalTodos={totalTodos} remainingTodos={remainingTodos}></Header>
 	
 	<!-- List of actual todos -->
-	<TodoList todos= {todos} on:completed={onComplete}></TodoList>
+	<TodoList todos= {todos} on:completed={onComplete} on:deleted={onDelete}></TodoList>
 
     <!-- Form component that takes input from user -->
     <Form bind:newText on:created={createdTodo}></Form>
