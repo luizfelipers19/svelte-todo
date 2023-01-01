@@ -10,6 +10,17 @@ import Header from "./components/Header.svelte";
         {id:3 , text: "My new Todo", completed: true},
     ]
 
+    function onComplete(event){
+        let updateId = event.detail.id;
+        // console.log("Completing ", updateId);
+        todos.map((todo) =>{
+            if (todo.id == updateId) {
+                todo.completed = !todo.completed;
+            }
+        });
+        todos = todos;
+    }
+
 </script>
 
 
@@ -20,7 +31,7 @@ import Header from "./components/Header.svelte";
 	<Header></Header>
 	
 	<!-- List of actual todos -->
-	<TodoList todos= {todos}></TodoList>
+	<TodoList todos= {todos} on:completed={onComplete}></TodoList>
 
     <!-- Form component that takes input from user -->
     <Form></Form>

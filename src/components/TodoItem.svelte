@@ -1,13 +1,31 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+
+    export let itemId;
     export let itemText;
     export let completed;
+
+    
+    const dispatch = createEventDispatcher();
+    function clickComplete(id){
+
+        // console.log(id);
+        dispatch("completed", {id: id})
+    };
+
 </script>
 
 
 <li class="todo-list list-item-view {completed ? "completed": ""} ">
     <span>
-<button class="btn btn-done fa-solid {completed ? "fa-square-check" : "fa-square"}"></button>
-<span>{itemText}</span>
+
+    <button 
+        class="btn btn-done fa-solid {completed ? "fa-square-check" : "fa-square"}"
+        on:click={() => clickComplete(itemId)}
+        >
+    </button>
+
+    <span>{itemText}</span>
     </span>
     <button class="btn btn-delete fa-solid fa-trash"></button>
 </li>
